@@ -1,7 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 
+// Routers
 const planetsRouter = require('./routes/planets/planets.router');
+
+const { loadPlanetsData } = require('./models/planets.model');
 
 const app = express();
 const whitelist = ['http://localhost:3000'];
@@ -19,7 +22,13 @@ app.use(express.json()); // แปรงข้อมูลใน body เป็�
 // End point
 app.use(planetsRouter);
 
-const PORT = process.env.PORT || 8000;
-app.listen(PORT, () => {
-    console.log(`Server listening at: http://localhost:${PORT}`);
-});
+async function startServer() {
+    await loadPlanetsData();
+    const PORT = process.env.PORT || 8000;
+    app.listen(PORT, () => {
+        console.log(`Server listening at: http://localhost:${PORT}`);
+    });
+}
+
+// ไม่ต้องใส่ await เพื่อรอฟังชันก์ทำงานเสร็จ เพราะไม่มีอะไรรอทำงานต่อแล้วหลังจากเซิฟเวอร์
+startServer();
