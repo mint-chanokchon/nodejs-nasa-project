@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 // Routers
 const planetsRouter = require('./routes/planets/planets.router');
@@ -13,14 +14,18 @@ app.use(cors({
         if (whitelist.indexOf(origin) !== -1) {
             callback(null, true);
         } else {
-            callback(new Error('Not allowed by CORS'))
+            callback(null, false)
         }
     },
 }));
 app.use(express.json()); // แปรงข้อมูลใน body เป็น json ให้
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // End point
 app.use(planetsRouter);
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'index.html'))
+});
 
 async function startServer() {
     await loadPlanetsData();
