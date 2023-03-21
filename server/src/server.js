@@ -19,7 +19,7 @@ app.use(cors({
         }
     },
 }));
-app.use(morgan('combined'));
+app.use(morgan('combined')); // log request
 app.use(express.json()); // แปรงข้อมูลใน body เป็น json ให้
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
