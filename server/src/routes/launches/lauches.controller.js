@@ -1,0 +1,1 @@
+const launchesModel = require('../../models/launches.model')
