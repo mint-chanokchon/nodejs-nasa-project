@@ -24,8 +24,11 @@ app.use(morgan('combined')); // log request
 app.use(express.json()); // แปรงข้อมูลใน body เป็น json ให้
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-// End point
+// End point api
 app.use(planetsRouter);
+app.use(lauchesRouter);
+
+// End point front-end
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'index.html'))
 });
