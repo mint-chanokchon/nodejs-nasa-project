@@ -42,6 +42,10 @@ function loadPlanetsData() {
     });
 }
 
+function getAllPlanets() {
+    return habitablePlanet;
+}
+
 function isHabitablePlanet(planet) {
     return planet['koi_disposition'] === 'CONFIRMED'
         && planet['koi_insol'] > 0.36 && planet['koi_insol'] < 1.11
@@ -49,6 +53,6 @@ function isHabitablePlanet(planet) {
 }
 
 module.exports = {
-    planets: habitablePlanet,
-    loadPlanetsData
+    loadPlanetsData,
+    getAllPlanets
 }
