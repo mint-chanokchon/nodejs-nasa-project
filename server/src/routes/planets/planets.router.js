@@ -6,6 +6,6 @@ const {
 
 const router = express.Router();
 
-router.get('/planets', getAllPlanets);
+router.get('/', getAllPlanets);
 
 module.exports = router;

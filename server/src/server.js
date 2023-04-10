@@ -25,8 +25,8 @@ app.use(express.json()); // แปรงข้อมูลใน body เป็�
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // End point api
-app.use(planetsRouter);
-app.use(lauchesRouter);
+app.use('/planets', planetsRouter);
+app.use('/launches', lauchesRouter);
 
 // End point front-end
 app.get('/*', (req, res) => {

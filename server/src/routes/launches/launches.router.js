@@ -2,8 +2,12 @@ const express = require('express');
 
 const router = express.Router();
 
-const { httpGetAllLaunches, add } = require('./lauches.controller');
+const { 
+    httpGetAllLaunches, 
+    httpAddNewLaunch 
+} = require('./lauches.controller');
 
-router.get('/launches', httpGetAllLaunches);
+router.get('/', httpGetAllLaunches);
+router.post('/', httpAddNewLaunch);
 
 module.exports = router;
