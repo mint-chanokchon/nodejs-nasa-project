@@ -13,7 +13,7 @@ function httpAddNewLaunch(req, res) {
     const launch = req.body;
 
     // ถ้าเป็น null หรือ undefind จะเป็น false
-    const condition = (!launch.mission || !launch.rocket || !launch.launchDate || !launch.destination);
+    const condition = (!launch.mission || !launch.rocket || !launch.launchDate || !launch.target);
     if (condition) return res.status(400).json({
         error: 'Messing require launch property.',
     });
