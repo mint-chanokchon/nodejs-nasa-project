@@ -30,7 +30,23 @@ function addLaunch(launch) {
     }));
 }
 
+function exitsLaunchWithId(id) {
+    console.log(launch);
+    console.log(launches.has(id));
+    return launches.has(id);
+}
+
+function abortLaunchById(id) {
+    const aborted = launches.get(id);
+    aborted.upcoming = false;
+    aborted.success = false;
+
+    return aborted;
+}
+
 module.exports = {
     getAllLaunches,
-    addLaunch
+    addLaunch,
+    exitsLaunchWithId,
+    abortLaunchById
 }
