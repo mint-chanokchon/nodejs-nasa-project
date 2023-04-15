@@ -6,15 +6,15 @@ describe('Test GET /launches', () => {
 });
 
 describe('Test POST /launches', () => {
-    test('Should response with 200 success', () => {
+    test('Should response with 200 success.', () => {
 
     });
 
-    test('Should catch missing required properties', () => {
+    test('Should catch missing required properties.', () => {
 
     });
 
-    test('Should catch invalid dates', () => {
+    test('Should catch invalid dates.', () => {
 
     });
 });
