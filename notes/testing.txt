@@ -4,3 +4,6 @@
         > Test fixtures
         > Assertions
         > Mocking
+
+    Supertest library
+        เป็น library ที่เราใช้ในการทดสอบ API

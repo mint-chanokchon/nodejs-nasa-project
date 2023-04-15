@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const morgan = require('morgan');
+const http = require('http');
 
 // Routers
 const planetsRouter = require('./routes/planets/planets.router');
@@ -33,13 +34,17 @@ app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'index.html'))
 });
 
+const server = http.createServer(app);
+
 async function startServer() {
     await loadPlanetsData();
     const PORT = process.env.PORT || 8000;
-    app.listen(PORT, () => {
+    server.listen(PORT, () => {
         console.log(`Server listening at: http://localhost:${PORT}`);
     });
 }
 
 // ไม่ต้องใส่ await เพื่อรอฟังชันก์ทำงานเสร็จ เพราะไม่มีอะไรรอทำงานต่อแล้วหลังจากเซิฟเวอร์
 startServer();
+
+module.exports = app;
